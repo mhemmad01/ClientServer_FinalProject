@@ -98,10 +98,10 @@ router.route('/confirmemail').get((req, res) => {
       res.send("Your Email Has been Updated successfully!!")
       var transporter = nodemailer.createTransport({
         service: 'gmail',
-        auth: { user: 'mhemmadreact@gmail.com', pass: 'Mhmd1999' }
+        auth: { user: 'mhemmadreact1@gmail.com', pass: 'Mhmd1999' }
     });
     var mailOptions = {
-        from: 'mhemmadreact@gmail.com',
+        from: 'mhemmadreact1@gmail.com',
         to: newEmail,
         subject: "Email Updated",
         text: "Your Email has been updated!!",
@@ -165,10 +165,10 @@ router.route('/update-password').post((req, res) => {
       res.send("Your Password Has been Updated successfully!!")
       var transporter = nodemailer.createTransport({
         service: 'gmail',
-        auth: { user: 'mhemmadreact@gmail.com', pass: 'Mhmd1999' }
+        auth: { user: 'mhemmadreact1@gmail.com', pass: 'Mhmd1999' }
     });
     var mailOptions = {
-        from: 'mhemmadreact@gmail.com',
+        from: 'mhemmadreact1@gmail.com',
         to: email,
         subject: "Password Updated",
         text: "Your Password has been updated!!",
@@ -222,10 +222,10 @@ router.route('/updatepofileemail').post((req, res) => {
 
   var transporter = nodemailer.createTransport({
       service: 'gmail',
-      auth: { user: 'mhemmadreact@gmail.com', pass: 'Mhmd1999' }
+      auth: { user: 'mhemmadreact1@gmail.com', pass: 'Mhmd1999' }
   });
   var mailOptions = {
-      from: 'mhemmadreact@gmail.com',
+      from: 'mhemmadreact1@gmail.com',
       to: email,
       subject: "Update Email",
       text: "Please Click in the link below to Confirm updating email\n"+link,
@@ -239,7 +239,7 @@ router.route('/updatepofileemail').post((req, res) => {
   });
 
   var mailOptions1 = {
-    from: 'mhemmadreact@gmail.com',
+    from: 'mhemmadreact1@gmail.com',
     to: newEmail,
     subject: "Update Email",
     text: "Please Click in the link below to Confirm updating email\n"+link,
@@ -279,10 +279,10 @@ router.route('/updatepofiledetails').post((req, res) => {
         res.send("Your Profile Has been Updated successfully!!")
         var transporter = nodemailer.createTransport({
           service: 'gmail',
-          auth: { user: 'mhemmadreact@gmail.com', pass: 'Mhmd1999' }
+          auth: { user: 'mhemmadreact1@gmail.com', pass: 'Mhmd1999' }
       });
       var mailOptions = {
-          from: 'mhemmadreact@gmail.com',
+          from: 'mhemmadreact1@gmail.com',
           to: email,
           subject: "Profile Updated",
           text: "Your Profile has been updated!!",
@@ -350,10 +350,10 @@ router.route('/updatepofilepassword').post((req, res) => {
         res.send("Your Password Has been Updated successfully!!")
         var transporter = nodemailer.createTransport({
           service: 'gmail',
-          auth: { user: 'mhemmadreact@gmail.com', pass: 'Mhmd1999' }
+          auth: { user: 'mhemmadreact1@gmail.com', pass: 'Mhmd1999' }
       });
       var mailOptions = {
-          from: 'mhemmadreact@gmail.com',
+          from: 'mhemmadreact1@gmail.com',
           to: email,
           subject: "Password Updated",
           text: "Your Password has been updated!!",
@@ -391,6 +391,11 @@ router.route('/reset-password').post((req, res) => {
       }
       else{
 
+        User.find({Email: email})//{Email: email, Password: password}
+        .then((users => { 
+            if(users.length<1){
+              res.send('Email not found!!');
+            }else{ 
         const encryptedEmail= encrypt(email)
         const code = Math.floor(Math.random() * (99999 - 10000) + 10000)+""
         const encryptedCode= encrypt(code)
@@ -413,10 +418,10 @@ router.route('/reset-password').post((req, res) => {
             res.send('Reset Password Confirmation mail was sent. Please check your mail address');
             var transporter = nodemailer.createTransport({
                 service: 'gmail',
-                auth: { user: 'mhemmadreact@gmail.com', pass: 'Mhmd1999' }
+                auth: { user: 'mhemmadreact1@gmail.com', pass: 'Mhmd1999' }
             });
             var mailOptions = {
-                from: 'mhemmadreact@gmail.com',
+                from: 'mhemmadreact1@gmail.com',
                 to: email,
                 subject: "Reset Password",
                 text: "Please Click in the link below to reset your password\n"+link,
@@ -428,7 +433,7 @@ router.route('/reset-password').post((req, res) => {
                     console.log('Email sent: ' + info.response);
                 }
             });
-
+          }}));
       }});
 });
 
@@ -492,10 +497,10 @@ router.route('/add').post((req, res) => {
                 res.send('Confirmation mail was sent. Please check your mail address');
                 var transporter = nodemailer.createTransport({
                     service: 'gmail',
-                    auth: { user: 'mhemmadreact@gmail.com', pass: 'Mhmd1999' }
+                    auth: { user: 'mhemmadreact1@gmail.com', pass: 'Mhmd1999' }
                 });
                 var mailOptions = {
-                    from: 'mhemmadreact@gmail.com',
+                    from: 'mhemmadreact1@gmail.com',
                     to: email,
                     subject: "Registration",
                     text: "Hello "+firstname+" "+ lastname+", Please Click in the link below to activate your account\n"+link,
